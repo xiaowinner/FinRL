@@ -52,8 +52,10 @@ class FutuDownloader:
             7 columns: A date, open, high, low, close, volume and tick symbol
             for the specified stock ticker
         """
+        # 将列: 'time_key' 的列类型更改为 datetime64[ns]
+        data_df = data_df.astype({'time_key': 'datetime64[ns]'})
+        data_df['date'] = data_df['time_key'].dt.strftime('%Y/%m/%d')
         data_df["day"] = data_df["time_key"]
-        data_df["date"] = data_df["time_key"]
         data_df["tic"] = data_df["code"]
         data_df["adjcp"] = data_df["close"]
 
