@@ -53,6 +53,7 @@ class FutuDownloader:
             for the specified stock ticker
         """
         data_df["day"] = data_df["time_key"]
+        data_df["date"] = data_df["time_key"]
         data_df["tic"] = data_df["code"]
         data_df["adjcp"] = data_df["close"]
 
